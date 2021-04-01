@@ -1,0 +1,1 @@
+Product.create([{ name: 'Elsa', price: 9.99 }, { name: 'Rapunzel', price: 8.99 }])

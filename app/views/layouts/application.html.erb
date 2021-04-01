@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Barbie Market Seller Portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%if current_user %>
+    <%=link_to "All Barbies", products_path %>
+    <%=link_to "New Barbie", new_product_path %>
+    <%=link_to "New Listing", new_listing_path %>
+    <%=link_to "All Listings", listings_path %>
+    <%=link_to "My Barbies", user_products_path(current_user) %>
+    <%= button_to "Log Out", logout_path, method: :post %>
+
+    <%else%>
+      <%= link_to "Log In", login_path %>
+      <%= link_to "Sign Up", signup_path %>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
