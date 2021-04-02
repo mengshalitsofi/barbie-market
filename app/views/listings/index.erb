@@ -1,0 +1,9 @@
+<h1>Search By Quantity</h1>
+
+<%= form_with url: listings_path, method: :get do |f| %>
+  <%=f.text_field :quantity %>
+  <%=f. submit "Search"%>
+<%end%>
+
+
+<%=render(partial: 'listings', locals: {listings: @listings, index: true})%>
