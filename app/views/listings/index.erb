@@ -1,9 +1,11 @@
-<h1>Search By Quantity</h1>
+<h1>All Listings</h1>
 
+<h3>Search by quantity: Find all listings having at least a certain amount of items for sale</h3>
 <%= form_with url: listings_path, method: :get do |f| %>
   <%=f.text_field :quantity %>
   <%=f. submit "Search"%>
 <%end%>
 
+<br>
 
 <%=render(partial: 'listings', locals: {listings: @listings, index: true})%>

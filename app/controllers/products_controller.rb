@@ -9,8 +9,10 @@ class ProductsController < ApplicationController
       if params[:user_id]
         user = User.find_by(id: params[:user_id])
         @products = user.products
+        @show_all_barbies = false
       else
         @products = Product.all
+        @show_all_barbies = true
       end
     end
   

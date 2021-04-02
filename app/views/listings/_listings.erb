@@ -1,3 +1,39 @@
-<%listings.each do |l|%>
-  <li><%=l.quantity%> <%=show_product_name(l, index)%></li>
+<%if listings.count > 0%>
+  <table border=1>
+    <tr>
+      <% if index %>
+      <td>
+        <b>
+          Barbie Name
+        </b>
+      </td>
+      <%end%>
+      <td>
+        <b>
+          Quantity
+        </b>
+      </td>
+      <td>
+        <b>
+          Sold By
+        </b>
+      </td>
+    </tr>
+    <%listings.each do |l|%>
+    <tr>
+      <% if index%>
+        <td>
+          <%= l.product.name%>
+          <%#=show_product_name(l, index)%>
+        </td>
+      <% end %>
+      <td>
+        <%=l.quantity%>
+      </td>
+      <td>
+        <%=l.user.username%>
+      </td>
+    </tr>
+    <%end%>
+  </table>
 <%end%>
