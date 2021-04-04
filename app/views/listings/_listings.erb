@@ -20,20 +20,21 @@
       </td>
     </tr>
     <%listings.each do |l|%>
-    <tr>
-      <% if index%>
-        <td>
-          <%= l.product.name%>
-          <%#=show_product_name(l, index)%>
-        </td>
-      <% end %>
-      <td>
-        <%=l.quantity%>
-      </td>
-      <td>
-        <%=l.user.username%>
-      </td>
-    </tr>
+      <% if l.product %>
+        <tr>
+          <% if index%>
+            <td>
+              <%= l.product.name%>
+            </td>
+          <% end %>
+          <td>
+            <%=l.quantity%>
+          </td>
+          <td>
+            <%=l.user.username%>
+          </td>
+        </tr>
+      <%end%>
     <%end%>
   </table>
 <%end%>
