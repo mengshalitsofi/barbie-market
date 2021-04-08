@@ -17,31 +17,31 @@
           <%= image_tag("barbie.png", width: 100) %>
         </td>
         <%if current_user %>
-        <td>
-          <%=link_to "All Barbies", products_path %>
-        </td>
-        <td>
-          <%=link_to "New Barbie", new_product_path %>
-        </td>
-        <td>
-          <%=link_to "New Listing", new_listing_path %>
-        </td>
-        <td>
-          <%=link_to "All Listings", listings_path %>
-        </td>
-        <td>
-          <%=link_to "My Barbies", user_products_path(current_user) %>
-        </td>
-        <td>
-          <%= button_to "Log Out", logout_path, method: :post %>
-        </td>
+          <td>
+            <%=link_to "All Barbies", products_path %>
+          </td>
+          <td>
+            <%=link_to "New Barbie", new_product_path %>
+          </td>
+          <td>
+            <%=link_to "New Listing", new_listing_path %>
+          </td>
+          <td>
+            <%=link_to "All Listings", listings_path %>
+          </td>
+          <td>
+            <%=link_to "My Barbies", user_products_path(current_user) %>
+          </td>
+          <td>
+            <%= button_to "Log Out", logout_path, method: :post %>
+          </td>
         <%else%>
-        <td>
-          <%= link_to "Log In", login_path %>
-        </td>
-        <td>
-          <%= link_to "Sign Up", signup_path %>
-        </td>
+          <td>
+            <%= link_to "Log In", login_path %>
+          </td>
+          <td>
+            <%= link_to "Sign Up", signup_path %>
+          </td>
         <%end%>
         </tr>
     </table>

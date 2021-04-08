@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
     layout "application"
 
   def index
-    if params[:quantity]
+    if params[:quantity] && params[:quantity] != ""
       @listings = Listing.quantity_search(params[:quantity])
     else
       @listings = Listing.all
@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.create(listing_params)
     @listing.user = current_user
-    if params[:product_id]
+    if params[:product_id] # in case this is coming from the URL
       @listing.product_id = params[:product_id]
     end
     if @listing.save
@@ -37,7 +37,10 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    if @listing.user != current_user
+    if @listing == nil
+      flash[:message] = "The listing does not exist!"
+      redirect_to '/products'
+    elsif @listing.user != current_user
       flash[:message] = "That is not your listing!"
       redirect_to '/products'
     else
@@ -55,9 +58,8 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    p = @listing.product
     @listing.delete
-    redirect_to product_path(p)
+    redirect_to product_path(@listing.product)
   end
 
   private

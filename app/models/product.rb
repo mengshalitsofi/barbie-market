@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
-
+    validates :price, presence: true
     has_many :listings
     has_many :users, through: :listings
   
@@ -15,6 +15,5 @@ class Product < ApplicationRecord
         end
       end
     end
-    
   end
   

@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
         @products = user.products.uniq
         @show_all_barbies = false
       else
-        @products = Product.all
+          @products = Product.all
         @show_all_barbies = true
       end
     end
@@ -21,8 +21,8 @@ class ProductsController < ApplicationController
   
     def new
       @product = Product.new
-      @product.listings.build(user: current_user)
-      @listings = @product.listings.select{|l| l.user_id == current_user.id}
+      @product.listings.build
+      #@listings = @product.listings.select{|l| l.user_id == current_user.id}
     end
   
     def create
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       if @product.save
           redirect_to product_path(@product)
       else
-        @listings = @product.listings.select{|l| l.user_id == current_user.id}
+    #    @listings = @product.listings.select{|l| l.user_id == current_user.id}
         render :new
       end
     end
@@ -50,10 +50,10 @@ class ProductsController < ApplicationController
     #   end
     # end
   
-    def destroy
-      @product.delete
-      redirect_to products_path
-    end
+    # def destroy
+    #   @product.delete
+    #   redirect_to products_path
+    # end
     
     private
   
