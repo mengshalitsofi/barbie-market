@@ -35,6 +35,26 @@ class ListingsController < ApplicationController
     end
   end
 
+  def edit
+    @listing = Listing.find_by(id: params[:id])
+    if @listing.user != current_user
+      flash[:message] = "That is not your listing!"
+      redirect_to '/products'
+    else
+      @products = Product.all
+    end
+  end
+
+  def update
+    @listing = Listing.find_by(id: params[:id])
+    if @listing.update(listing_params)
+      redirect_to product_path(@listing.product)
+    else
+      @products = Product.all
+      render :edit
+    end
+  end
+
   private
 
   def listing_params

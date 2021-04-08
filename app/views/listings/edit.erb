@@ -1,0 +1,13 @@
+<%=render(partial: "application/errors", locals: {errors: @listing.errors.full_messages})%>
+
+<h3>Editing listing for <%= @listing.product.name %></h3>
+
+<%= form_for(@listing) do |f|%>
+  <%=f.label "Quantity"%>
+  <%=f.number_field(:quantity)%>
+  <%if !@product%>
+    <%=f.label "Barbie Name"%>
+    <%=f.collection_select(:product_id, @products, :id, :name) %>
+  <%end%>
+  <%=f.submit("Save")%>
+<%end%>

@@ -37,18 +37,18 @@ class ProductsController < ApplicationController
       end
     end
   
-    def edit
-        @listings = @product.listings.where(user_id: current_user.id)
-    end
+    # def edit
+    #     @listings = @product.listings.where(user_id: current_user.id)
+    # end
   
-    def update
-      if @product.update(product_params)
-        redirect_to(product_path(@product))
-      else
-        @listings = @product.listings.select{|l| l.user_id == current_user.id}
-        render :edit
-      end
-    end
+    # def update
+    #   if @product.update(product_params)
+    #     redirect_to(product_path(@product))
+    #   else
+    #     @listings = @product.listings.select{|l| l.user_id == current_user.id}
+    #     render :edit
+    #   end
+    # end
   
     def destroy
       @product.delete

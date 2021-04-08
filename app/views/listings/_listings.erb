@@ -18,9 +18,14 @@
           Sold By
         </b>
       </td>
+      <td>
+        <b>
+          Actions
+        </b>
+      </td>
     </tr>
     <%listings.each do |l|%>
-      <% if l.product %>
+      <% if l.product %> <!-- Added this check to prevent listings without product showing up -->
         <tr>
           <% if index%>
             <td>
@@ -32,6 +37,11 @@
           </td>
           <td>
             <%=l.user.username%>
+          </td>
+          <td>
+            <% if l.user == current_user %>
+              <%=link_to "Edit", edit_listing_path(l) %>
+            <% end %>
           </td>
         </tr>
       <%end%>

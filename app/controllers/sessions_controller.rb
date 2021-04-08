@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
     end
   
     def create_with_fb
+      binding.pry
       user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
         u.password = 'password'
       end
