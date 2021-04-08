@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
     before_action(:require_login)
+    before_action(:set_listing, only: [:edit, :update, :destroy])
     layout "application"
 
   def index
@@ -36,7 +37,6 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find_by(id: params[:id])
     if @listing.user != current_user
       flash[:message] = "That is not your listing!"
       redirect_to '/products'
@@ -46,7 +46,6 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @listing = Listing.find_by(id: params[:id])
     if @listing.update(listing_params)
       redirect_to product_path(@listing.product)
     else
@@ -55,7 +54,17 @@ class ListingsController < ApplicationController
     end
   end
 
+  def destroy
+    p = @listing.product
+    @listing.delete
+    redirect_to product_path(p)
+  end
+
   private
+
+  def set_listing
+    @listing = Listing.find_by(id: params[:id])
+  end
 
   def listing_params
     params.require(:listing).permit(:quantity, :product_id)

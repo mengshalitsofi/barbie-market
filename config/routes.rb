@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :listings, only: [:new, :create]
   end
 
-  resources :listings, only: [:new, :create, :index, :edit, :update]
+  resources :listings, only: [:new, :create, :index, :edit, :update, :destroy]
 
   get '/signup', to: "users#new", as: "signup"
   post '/signup', to: "users#create"

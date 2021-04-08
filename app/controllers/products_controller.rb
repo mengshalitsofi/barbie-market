@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     def index
       if params[:user_id]
         user = User.find_by(id: params[:user_id])
-        @products = user.products
+        @products = user.products.uniq
         @show_all_barbies = false
       else
         @products = Product.all

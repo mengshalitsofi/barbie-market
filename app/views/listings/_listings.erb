@@ -41,6 +41,7 @@
           <td>
             <% if l.user == current_user %>
               <%=link_to "Edit", edit_listing_path(l) %>
+              <%=button_to "Delete", l, method: :delete%>
             <% end %>
           </td>
         </tr>
