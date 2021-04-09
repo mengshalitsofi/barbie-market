@@ -5,9 +5,9 @@
 <%= form_for(@listing) do |f|%>
   <%=f.label "Quantity"%>
   <%=f.number_field(:quantity)%>
-  <%if !@product%>
-    <%=f.label "Barbie Name"%>
-    <%=f.collection_select(:product_id, @products, :id, :name) %>
-  <%end%>
+  <br>
+  <%=f.label "Barbie Name"%>
+  <%=f.collection_select(:product_id, @products, :id, :name) %>
+  <br>
   <%=f.submit("Save")%>
 <%end%>

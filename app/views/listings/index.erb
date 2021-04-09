@@ -1,5 +1,9 @@
 <h1>All Listings</h1>
 
+<%=link_to "Show listing with highest quantity", "/listings/max"%>
+
+<br>
+
 <h3>Search by quantity: Find all listings having at least a certain amount of items for sale</h3>
 <%= form_with url: listings_path, method: :get do |f| %>
   <%=f.text_field :quantity %>

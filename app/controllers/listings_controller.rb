@@ -62,6 +62,11 @@ class ListingsController < ApplicationController
     redirect_to product_path(@listing.product)
   end
 
+  def max
+    @listing = Listing.max_quantity_listing
+    render :show
+  end
+
   private
 
   def set_listing

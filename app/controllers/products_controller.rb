@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
   
     def create
       @product = Product.new(product_params)
+      #@product.listings[0].user = current_user
       @product.listings.each {|l| l.user = current_user}
 
       if @product.save
