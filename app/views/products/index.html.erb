@@ -1,5 +1,12 @@
 <h1><%= @show_all_barbies ? "All" : "My"%> Barbies</h1>
 
+<%if @show_all_barbies%>
+  <%=link_to "Sort by Price", "/products_by_price" %>
+<%end%>
+
+<br>
+<br>
+
 <%@products.each do |p|%>
-  <li><%=link_to(p.name, product_path(p))%></li>
+  <li><%=link_to(p.name, product_path(p))%> ($<%=p.price%>)</li>
 <%end%>

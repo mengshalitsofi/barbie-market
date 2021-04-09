@@ -16,6 +16,12 @@ class ProductsController < ApplicationController
       end
     end
   
+    def byprice
+        @products = Product.all.order(:price).reverse
+        @show_all_barbies = true
+        render :index
+    end
+
     def show
     end
   
