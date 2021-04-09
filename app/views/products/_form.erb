@@ -1,10 +1,14 @@
 <%=form_with(model: @product) do |f|%>
   <%=f.label("Barbie Name:") %>
   <%=f.text_field(:name) %>
+  <br>
   <%=f.label("Barbie Price:") %>
   <%=f.number_field(:price, step: 0.01) %>
-  <%=f.label("Listings:") %>
-  <%=f.fields_for(:listings, @listings) do |l| %>
+  <br>
+  <br>
+  <%=f.label("Listing:") %>
+  <br>
+  <%=f.fields_for(:listings) do |l| %>
     <%=l.label "Quantity"%>
     <%=l.number_field :quantity%>
   <%end%>
